@@ -3,9 +3,9 @@
     "step": {
       "user": {
         "title": "Connect to multiACE",
-        "description": "Enter the printer's multiACE Web URL.",
+        "description": "Enter your printer address. Use the multiACE Web URL, for example http://yourprinter/multiace/.",
         "data": {
-          "base_url": "multiACE URL"
+          "base_url": "Printer address"
         }
       }
     },
