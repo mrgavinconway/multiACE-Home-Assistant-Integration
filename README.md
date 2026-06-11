@@ -9,11 +9,35 @@ Custom Home Assistant integration for the multiACE Web API on Snapmaker U1 print
 - Creates toolhead sensors showing which ACE and slot currently feed each toolhead.
 - Creates one dryer switch per possible ACE. Turning a switch on sends `ACE_DRY`; turning it off sends `ACE_STOP_DRYING`.
 
-## Install
+## Installation
+
+### HACS (recommended)
+
+1. Open **HACS** in Home Assistant.
+2. Open the three-dot menu in the top-right corner and choose **Custom repositories**.
+3. Add this repository URL:
+
+   ```text
+   https://github.com/mrgavinconway/multiACE-Home-Assistant-Integration
+   ```
+
+4. Set the category to **Integration**, then select **Add**.
+5. Find **multiACE Home Assistant Integration** in HACS and download it.
+6. Restart Home Assistant.
+7. Go to **Settings > Devices & services > Add integration** and search for **multiACE**.
+8. Enter your printer address when prompted.
+
+Use your printer hostname or IP address:
+
+```text
+http://yourprinter/multiace/
+```
+
+### Manual
 
 Copy `custom_components/multiace` into your Home Assistant `custom_components` directory, restart Home Assistant, then add **multiACE** from **Settings > Devices & services**.
 
-Use your printer hostname or IP address:
+When prompted, use your printer hostname or IP address:
 
 ```text
 http://yourprinter/multiace/
