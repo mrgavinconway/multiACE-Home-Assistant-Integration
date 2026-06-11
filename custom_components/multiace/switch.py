@@ -15,7 +15,8 @@ from .const import (
     DEFAULT_DRYER_DURATION,
     DEFAULT_DRYER_TEMP,
     DOMAIN,
-    MAX_ACE_COUNT,
+    ace_dryer_duration_option,
+    ace_dryer_temp_option,
 )
 from .coordinator import MultiAceCoordinator
 from .entity import MultiAceAceEntity
@@ -28,9 +29,14 @@ async def async_setup_entry(
 ) -> None:
     """Set up multiACE switches."""
     coordinator: MultiAceCoordinator = hass.data[DOMAIN][entry.entry_id]
+    ace_indices = [
+        ace.get("idx")
+        for ace in coordinator.data.get("aces", [])
+        if ace.get("idx") is not None
+    ] if coordinator.data else []
     async_add_entities(
         MultiAceDryerSwitch(coordinator, entry, ace_index)
-        for ace_index in range(MAX_ACE_COUNT)
+        for ace_index in ace_indices
     )
 
 
@@ -73,11 +79,21 @@ class MultiAceDryerSwitch(MultiAceAceEntity, SwitchEntity):
 
     @property
     def _dryer_temp(self) -> int:
-        return int(self._entry.options.get(CONF_DRYER_TEMP, DEFAULT_DRYER_TEMP))
+        return int(
+            self._entry.options.get(
+                ace_dryer_temp_option(self.ace_index),
+                self._entry.options.get(CONF_DRYER_TEMP, DEFAULT_DRYER_TEMP),
+            )
+        )
 
     @property
     def _dryer_duration(self) -> int:
-        return int(self._entry.options.get(CONF_DRYER_DURATION, DEFAULT_DRYER_DURATION))
+        return int(
+            self._entry.options.get(
+                ace_dryer_duration_option(self.ace_index),
+                self._entry.options.get(CONF_DRYER_DURATION, DEFAULT_DRYER_DURATION),
+            )
+        )
 
     async def async_turn_on(self, **kwargs: Any) -> None:
         """Start drying."""
