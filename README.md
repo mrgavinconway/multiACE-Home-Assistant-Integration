@@ -13,10 +13,10 @@ Custom Home Assistant integration for the multiACE Web API on Snapmaker U1 print
 
 Copy `custom_components/multiace` into your Home Assistant `custom_components` directory, restart Home Assistant, then add **multiACE** from **Settings > Devices & services**.
 
-For your current printer, use:
+Use your printer hostname or IP address:
 
 ```text
-http://u1.lan/multiace/
+http://yourprinter/multiace/
 ```
 
 The integration polls `/multiace/api/state` locally every 15 seconds. Dryer switch defaults are 50 C for 240 minutes and can be changed from the integration options.
