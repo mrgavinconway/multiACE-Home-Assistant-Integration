@@ -4,13 +4,13 @@ from __future__ import annotations
 
 from typing import Any
 
-from homeassistant.components.sensor import SensorDeviceClass, SensorEntity, SensorEntityDescription, SensorStateClass
+from homeassistant.components.sensor import SensorDeviceClass, SensorEntity, SensorStateClass
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import PERCENTAGE, UnitOfTemperature
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
-from .const import DOMAIN, MAX_ACE_COUNT, SLOT_COUNT
+from .const import DOMAIN, SLOT_COUNT
 from .coordinator import MultiAceCoordinator
 from .entity import MultiAceAceEntity, MultiAceEntity
 
@@ -29,7 +29,10 @@ async def async_setup_entry(
         MultiAceStateSensor(coordinator, "active_device", "Active ACE"),
     ]
 
-    for ace in range(MAX_ACE_COUNT):
+    for ace_data in coordinator.data.get("aces", []) if coordinator.data else []:
+        ace = ace_data.get("idx")
+        if ace is None:
+            continue
         entities.extend(
             [
                 MultiAceTemperatureSensor(coordinator, ace),
@@ -37,7 +40,12 @@ async def async_setup_entry(
                 MultiAceDryerStatusSensor(coordinator, ace),
             ]
         )
-        for slot in range(SLOT_COUNT):
+        slot_indices = [
+            slot.get("idx")
+            for slot in ace_data.get("slots", [])
+            if slot.get("idx") is not None
+        ]
+        for slot in slot_indices or range(SLOT_COUNT):
             entities.append(MultiAceSlotSensor(coordinator, ace, slot))
 
     for toolhead in range(SLOT_COUNT):
