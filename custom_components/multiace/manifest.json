@@ -1,11 +1,11 @@
 {
   "domain": "multiace",
   "name": "multiACE",
-  "codeowners": [],
+  "codeowners": ["@mrgavinconway"],
   "config_flow": true,
-  "documentation": "https://github.com/decay71/multiACE",
+  "documentation": "https://github.com/mrgavinconway/multiACE-Home-Assistant-Integration",
   "iot_class": "local_polling",
-  "issue_tracker": "https://github.com/decay71/multiACE/issues",
+  "issue_tracker": "https://github.com/mrgavinconway/multiACE-Home-Assistant-Integration/issues",
   "requirements": [],
   "version": "0.1.0"
 }
