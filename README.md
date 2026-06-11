@@ -7,7 +7,7 @@ Custom Home Assistant integration for the multiACE Web API on Snapmaker U1 print
 - Shows the current multiACE printer state, mode, active ACE, ACE temperature, and dryer status.
 - Creates filament slot sensors for up to 4 ACE units with material, brand, subtype, color, RFID state, and loaded toolhead attributes.
 - Creates toolhead sensors showing which ACE and slot currently feed each toolhead.
-- Creates one dryer switch per possible ACE. Turning a switch on sends `ACE_DRY`; turning it off sends `ACE_STOP_DRYING`.
+- Creates dryer controls for each connected ACE. Set the dryer duration and temperature on the device page, then turn on the ACE dryer switch to send `ACE_DRY`. Turning it off sends `ACE_STOP_DRYING`.
 
 ## Installation
 
@@ -43,7 +43,7 @@ When prompted, use your printer hostname or IP address:
 http://yourprinter/multiace/
 ```
 
-The integration polls `/multiace/api/state` locally every 15 seconds. Dryer switch defaults are 50 C for 240 minutes and can be changed from the integration options.
+The integration polls `/multiace/api/state` locally every 15 seconds. Dryer switch defaults are 50 C for 240 minutes. Each connected ACE also has dryer duration and temperature controls on the device page.
 
 ## Credits
 
