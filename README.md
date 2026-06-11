@@ -22,7 +22,7 @@ Custom Home Assistant integration for the multiACE Web API on Snapmaker U1 print
    ```
 
 4. Set the category to **Integration**, then select **Add**.
-5. Find **multiACE Home Assistant Integration** in HACS and download it.
+5. Find **multiACE Home Assistant Integration** in HACS and download it. HACS only installs the integration files; it does not configure your printer.
 6. Restart Home Assistant.
 7. Go to **Settings > Devices & services > Add integration** and search for **multiACE**.
 8. Enter your printer address when prompted.
@@ -35,7 +35,7 @@ http://yourprinter/multiace/
 
 ### Manual
 
-Copy `custom_components/multiace` into your Home Assistant `custom_components` directory, restart Home Assistant, then add **multiACE** from **Settings > Devices & services**.
+Copy `custom_components/multiace` into your Home Assistant `custom_components` directory and restart Home Assistant. Then go to **Settings > Devices & services > Add integration**, search for **multiACE**, and add it there.
 
 When prompted, use your printer hostname or IP address:
 
