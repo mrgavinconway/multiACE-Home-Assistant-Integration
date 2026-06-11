@@ -11,7 +11,7 @@ from .api import MultiAceApi
 from .const import CONF_BASE_URL, DOMAIN
 from .coordinator import MultiAceCoordinator
 
-PLATFORMS: list[Platform] = [Platform.SENSOR, Platform.SWITCH]
+PLATFORMS: list[Platform] = [Platform.NUMBER, Platform.SENSOR, Platform.SWITCH]
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
