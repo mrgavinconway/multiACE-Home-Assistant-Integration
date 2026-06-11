@@ -1,0 +1,32 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to multiACE",
+        "description": "Enter the printer's multiACE Web URL.",
+        "data": {
+          "base_url": "multiACE URL"
+        }
+      }
+    },
+    "error": {
+      "auth": "The multiACE endpoint rejected the request.",
+      "cannot_connect": "Could not connect to multiACE.",
+      "unknown": "Unexpected error connecting to multiACE."
+    },
+    "abort": {
+      "already_configured": "This multiACE endpoint is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "multiACE dryer settings",
+        "data": {
+          "dryer_temp": "Dryer target temperature",
+          "dryer_duration": "Dryer duration in minutes"
+        }
+      }
+    }
+  }
+}
