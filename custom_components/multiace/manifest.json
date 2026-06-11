@@ -1,0 +1,11 @@
+{
+  "domain": "multiace",
+  "name": "multiACE",
+  "codeowners": [],
+  "config_flow": true,
+  "documentation": "https://github.com/decay71/multiACE",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/decay71/multiACE/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}
